@@ -1,25 +1,76 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { ThemeProvider } from 'styled-components'
+import GlobalStyles from './styles/GlobalStyles'
+import {dark} from './styles/Themes'
+import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
+import { useRef } from 'react'
+import 'locomotive-scroll/dist/locomotive-scroll.css'
+import Home from "./Section/Home"
+import About from "./Section/About"
+import Shop from "./Section/Shop"
+import { AnimatePresence } from 'framer-motion'
+import Scrolltriggershop from './componenets/Scrolltriggershop'
+import Banner from './Section/Banner'
+import NewArrival from './Section/NewArrival'
+import Footer from './Section/Footer'
+import Loader from './componenets/Loader'
+import { useState } from 'react'
+import { useEffect } from 'react'
+
 
 function App() {
+  const containerRef = useRef(null);
+
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoaded(true);
+    }, 3000);
+    return () => {
+      
+    }
+  }, [])
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    <>
+    <GlobalStyles    />
+    <ThemeProvider theme={dark}>
+    <LocomotiveScrollProvider
+    options={{
+      smooth: true,
+      // ... all available Locomotive Scroll instance options 
+    }}
+  watch={
+    [
+      //..all the dependencies you want to watch to update the scroll.
+      //  Basicaly, you would want to watch page/location changes
+      //  For exemple, on Next.js you would want to watch properties like `router.asPath` (you may want to add more criterias if the instance should be update on locations with query parameters)
+    ]
+  }
+  containerRef={containerRef}
+>
+  <AnimatePresence>
+  {loaded ? null:<Loader/>}
+  </AnimatePresence>
+  <Scrolltriggershop />
+  <AnimatePresence>
+  <main className='App' data-scroll-container ref={containerRef}>
+    <Home />
+    <About />
+    <Shop /> 
+    <Banner/>
+    <NewArrival />
+    <Footer />
+  </main>
+  </AnimatePresence>
+</LocomotiveScrollProvider>
+    </ThemeProvider>
+    </>
+  )
 }
 
-export default App;
+export default App
+
