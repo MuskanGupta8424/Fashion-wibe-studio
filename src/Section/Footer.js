@@ -99,7 +99,7 @@ const Footer = () => {
             <img 
             data-Scroll data-scroll-speed="2"
             src={Logo} alt="Wide Studio" />
-            <h3 data-Scroll data-scroll-speed="-1">Wide Studio  </h3>
+            <h3 data-Scroll data-scroll-speed="-1">Wibe Studio  </h3>
         </LogoContainer>
         <FooterComponenet
         initial={{y:"-400px"}}
@@ -133,7 +133,7 @@ const Footer = () => {
                  data-Scroll data-scroll-speed="-2" data-scroll-direction="horizontal" 
                 > Made with &hearts ; by
                 <a href="http://youtube.com/codebucks" target="_blank" rel="noreferrer">
-                    --AjCoder
+                    --MgCoder
                 </a></span>
             </Bottom>
         </FooterComponenet>
