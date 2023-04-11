@@ -132,7 +132,7 @@ const Footer = () => {
                 <span
                  data-Scroll data-scroll-speed="-2" data-scroll-direction="horizontal" 
                 > Made with &hearts ; by
-                <a href="http://youtube.com/codebucks" target="_blank" rel="noreferrer">
+                <a href="http://youtube.com" target="_blank" rel="noreferrer">
                     --MgCoder
                 </a></span>
             </Bottom>
